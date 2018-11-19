@@ -44,7 +44,7 @@ class Trainings extends Component {
 				trainingArray[i] = {
 					id: this.state.trainings[i].id,
 					activity: `${this.state.trainings[i].activity}`,
-					date: new Date(this.state.trainings[i].date),
+					date: this.state.trainings[i].date,
 					duration: `${this.state.trainings[i].duration}`,
 					customer: `${this.state.trainings[i].customer.firstname} ${this.state.trainings[i].customer.lastname}`,
 					location: `${this.state.trainings[i].customer.streetaddress} ${this.state.trainings[i].customer.city}`
@@ -115,7 +115,7 @@ class Trainings extends Component {
 				filterable: false,
 				Cell: row => {
 					return <div>
-						{moment(row.date).format('D MMM, H:mm')}
+						{moment(row.original.date).format('D MMM, H:mm')}
 					</div>;
 				}
 			}]

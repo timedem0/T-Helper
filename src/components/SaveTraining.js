@@ -41,7 +41,7 @@ class SaveTraining extends Component {
       customer: this.state.customer
     };
     this.props.saveTraining(newTraining);
-    this.setState({ visible: false, activity: '', duration: '', date: '', customer: '' })
+    this.setState({ visible: false })
   }
 
   importCustomers = () => {
@@ -58,11 +58,12 @@ class SaveTraining extends Component {
           customers: [...this.state.customers, customerToAdd]
         })
       }
-      // setting a default customer, so the user does not add training
+      // setting some default values, so the user does not add training
       // to null customer, by mistake
       this.setState({
         customer: this.state.customers[0].link,
-        duration: 30
+        duration: 30,
+        date: new Date()
       })
 		})
   }
@@ -131,7 +132,6 @@ class SaveTraining extends Component {
             <h4>Select Date and Time</h4>
             <DatePicker
               showTime
-              // format="YYYY-MM-DD HH:mm:ss"
               placeholder=""
               onChange={this.handleDateChange}
               onOk={this.handleDateChange}
